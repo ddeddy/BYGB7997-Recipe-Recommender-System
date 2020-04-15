@@ -74,6 +74,7 @@ class ReviewManager:
         return list(set(keywords_distinct))
     
     def fast_keywords(self, source, source_type = "csv"):
+        warnings.warn("Note! Long Running Time")
         if source_type == "csv":
             self.read_csv(source)
         if source_type == "dataframe":
