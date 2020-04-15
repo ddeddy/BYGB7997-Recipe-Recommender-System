@@ -15,6 +15,6 @@ To get a dataframe of keywords with the recipe id
   >>> from ReviewManager import ReviewManager
   >>> rm = ReviewManager()
   >>> rm.read_csv(source)  # if source is dataframe, use self.read_dataframe
-  >>> rm.tokenize_review(source)
+  >>> rm.tokenize_review()
   >>> df = rm.get_keywords_total(verbose = True)
   ```
