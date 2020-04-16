@@ -18,3 +18,12 @@ To get a dataframe of keywords with the recipe id
   >>> rm.tokenize_review()
   >>> df = rm.get_keywords_total(verbose = True)
   ```
+review2vec
+-------
+To generate a dataframe only containg vectorized keywords:
+```python
+  >>> from review2vec import review2vec
+  >>> transformer = review2vec()
+  >>> transformer.fit_raw_data(source, source_type = "{}")  # source can be a csv file or a dataframe
+  >>> vectorized_df = transformer.transform()
+  ```
