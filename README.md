@@ -8,7 +8,7 @@ To fast extract keywords from reviews:
 ```python
   >>> from ReviewManager import ReviewManager
   >>> rm = ReviewManager()
-  >>> keyword_list = rm.fast_keywords(source)  # source can be a csv file or a dataframe
+  >>> keyword_list = rm.fast_keywords(source, source_type = "{}")  # source can be a csv file or a dataframe
   ```
 To get a dataframe of keywords with the recipe id
 ```python
