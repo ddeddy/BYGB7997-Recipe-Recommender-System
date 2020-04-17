@@ -18,6 +18,25 @@ To get a dataframe of keywords with the recipe id
   >>> rm.tokenize_review()
   >>> df = rm.get_keywords_total(verbose = True)
   ```
+RecipeManager
+-------
+To get name/tag/ingredients keyword list from according columns:
+```python
+  >>> from recipemanager import RecipeManager
+  >>> re = RecipeManager()
+  >>> re.read_csv(".csv")
+  >>> name_list = re.get_name_list()
+  >>> tag_list = re.get_tag_list()
+  >>> ingre_list = re.get_ingre_list()
+  ```
+To get a dataframe of keywords with the recipe id
+```python
+  >>> from recipemanager import RecipeManager
+  >>> re = RecipeManager()
+  >>> re.read_csv(".csv")
+  >>> df = re.get_keyword_df()
+  ```
+  
 review2vec
 -------
 To generate a dataframe only containg vectorized keywords:
