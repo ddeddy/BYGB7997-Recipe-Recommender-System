@@ -37,7 +37,7 @@ To get a dataframe of keywords with the recipe id
   >>> df = re.get_keyword_df()
   ```
   
-review2vec
+Review2Vec
 -------
 To generate a dataframe only containg vectorized keywords:
 ```python
@@ -45,4 +45,9 @@ To generate a dataframe only containg vectorized keywords:
   >>> transformer = Review2Vec()
   >>> transformer.fit_raw_data(source, source_type = "{}")  # source can be a csv file or a dataframe
   >>> vectorized_df = transformer.transform()
+  ```
+Calculate the distance between selected recipe and the others:
+```python
+  # must after transform
+  >>> distance_df = transformer.calculate_distance(<recipe_id>)
   ```
