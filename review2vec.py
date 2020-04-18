@@ -8,7 +8,7 @@ import numpy as np
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import OneHotEncoder
 
-class review2vec:
+class Review2Vec:
     def __init__(self):
         self.rm = ReviewManager()
         self.keywords = list()
