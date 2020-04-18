@@ -6,13 +6,13 @@ ReviewManager
 -------
 To fast extract keywords from reviews:
 ```python
-  >>> from ReviewManager import ReviewManager
+  >>> from review_manager import ReviewManager
   >>> rm = ReviewManager()
   >>> keyword_list = rm.fast_keywords(source, source_type = "{}")  # source can be a csv file or a dataframe
   ```
 To get a dataframe of keywords with the recipe id
 ```python
-  >>> from ReviewManager import ReviewManager
+  >>> from review_manager import ReviewManager
   >>> rm = ReviewManager()
   >>> rm.read_csv(source)  # if source is dataframe, use self.read_dataframe
   >>> rm.tokenize_review()
@@ -41,8 +41,8 @@ review2vec
 -------
 To generate a dataframe only containg vectorized keywords:
 ```python
-  >>> from review2vec import review2vec
-  >>> transformer = review2vec()
+  >>> from review2vec import Review2Vec
+  >>> transformer = Review2Vec()
   >>> transformer.fit_raw_data(source, source_type = "{}")  # source can be a csv file or a dataframe
   >>> vectorized_df = transformer.transform()
   ```
