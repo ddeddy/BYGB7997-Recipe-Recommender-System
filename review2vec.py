@@ -54,5 +54,5 @@ class Review2Vec:
     def calculate_distance(self, recipe_id):
         user_select_vec = self.keywords_df["keywords"][recipe_id]
         user_select_vec_dist = self.keywords_df['keywords'].apply(lambda y:np.sqrt(np.square(user_select_vec - y).sum()))
-        return user_select_vec_dist[user_select_vec_dist.index != user_select].sort_values()
+        return user_select_vec_dist[user_select_vec_dist.index != user_select_vec].sort_values()
         
