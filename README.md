@@ -65,5 +65,7 @@ To generate a dataframe only containg vectorized keywords:
 Calculate the distance between selected recipe and the others:
 ```python
   # must after transform
-  >>> distance_df = transformer.calculate_distance(<recipe_id>)
+  >>> transformer.calculate_name_distance(<recipe_id>)
+  >>> transformer.calculate_tag_distance(<recipe_id>)
+  >>> transformer.calculate_ingre_distance(<recipe_id>)
   ```
