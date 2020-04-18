@@ -20,8 +20,8 @@ class review2vec:
         if source_type == "dataframe":
             self.rm.read_dataframe(source)
         self.rm.tokenize_review()
-        self.keywords = rm.get_keywords_total()
-        self.keywords_df = rm.get_keywords_total(verbose = True)
+        self.keywords = self.rm.get_keywords_total()
+        self.keywords_df = self.rm.get_keywords_total(verbose = True)
         
     def fit_scrubed_local(self, csv):
         self.keywords_df = pd.read_csv(csv)
@@ -47,11 +47,12 @@ class review2vec:
         return vector
 
     def transform(self):
-        encoders = dict(zip(("label_encoder", "onehot_encoder"), keywords_vec_generator(self.keywords)))
+        encoders = dict(zip(("label_encoder", "onehot_encoder"), self.keywords_vec_generator(self.keywords)))
         self.keywords_df["keywords"] = self.keywords_df["keywords"].map(lambda x:self.keywords2vec(x, **encoders))
         return self.keywords_df
-
+    
     def calculate_distance(self, recipe_id):
         user_select_vec = self.keywords_df["keywords"][recipe_id]
         user_select_vec_dist = self.keywords_df['keywords'].apply(lambda y:np.sqrt(np.square(user_select_vec - y).sum()))
         return user_select_vec_dist[user_select_vec_dist.index != user_select].sort_values()
+        
