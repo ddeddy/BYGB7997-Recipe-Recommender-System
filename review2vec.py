@@ -37,7 +37,7 @@ class Review2Vec:
         onehot_encoder.fit(label_encoded.reshape(len(label_encoded), 1))
         return label_encoder, onehot_encoder
     
-    def keywords2vec(self, keywords, label_encoder, onehot_encoder, **kwargs):
+    def keywords2vec(self, keywords, label_encoder, onehot_encoder):
         label_encoded = label_encoder.transform(keywords)
         label_encoded = label_encoded.reshape(len(label_encoded), 1)
         if label_encoded.shape == (0, 1): 
