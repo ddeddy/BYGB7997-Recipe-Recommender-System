@@ -23,7 +23,7 @@ class Recipe2Vec:
 
     def fit_scrubed_local(self, csv):
         self.keywords_df = pd.read_csv(csv)
-        self.keywords_df.set_index("recipe_id", inplace=True)
+        self.keywords_df.set_index("id", inplace=True)
         name_keywords_distinct = self.keywords_df["recipe_name"].to_list()[0].copy()
         for i in self.keywords_df["recipe_name"].to_list()[1:]:
             name_keywords_distinct.extend(i)
@@ -68,20 +68,20 @@ class Recipe2Vec:
         self.keywords_df["recipe_ingre"] = self.keywords_df["recipe_ingre"].map(lambda x: self.keywords2vec(x, **encoders))
         return self.keywords_df
 
-    def calculate_name_distance(self, recipe_id):
-        user_select_vec = self.keywords_df["recipe_name"][recipe_id]
+    def calculate_name_distance(self, id):
+        user_select_vec = self.keywords_df["recipe_name"][id]
         user_select_vec_dist = self.keywords_df['recipe_name'].apply(
             lambda y: np.sqrt(np.square(user_select_vec - y).sum()))
-        return user_select_vec_dist[user_select_vec_dist.index != recipe_id].sort_values()
+        return user_select_vec_dist[user_select_vec_dist.index != id].sort_values()
 
-    def calculate_tag_distance(self, recipe_id):
-        user_select_vec = self.keywords_df["recipe_tag"][recipe_id]
+    def calculate_tag_distance(self, id):
+        user_select_vec = self.keywords_df["recipe_tag"][id]
         user_select_vec_dist = self.keywords_df['recipe_tag'].apply(
             lambda y: np.sqrt(np.square(user_select_vec - y).sum()))
-        return user_select_vec_dist[user_select_vec_dist.index != recipe_id].sort_values()
+        return user_select_vec_dist[user_select_vec_dist.index != id].sort_values()
 
-    def calculate_ingre_distance(self, recipe_id):
-        user_select_vec = self.keywords_df["recipe_ingre"][recipe_id]
+    def calculate_ingre_distance(self, id):
+        user_select_vec = self.keywords_df["recipe_ingre"][id]
         user_select_vec_dist = self.keywords_df['recipe_ingre'].apply(
             lambda y: np.sqrt(np.square(user_select_vec - y).sum()))
-        return user_select_vec_dist[user_select_vec_dist.index != recipe_id].sort_values()
+        return user_select_vec_dist[user_select_vec_dist.index != id].sort_values()
