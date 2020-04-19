@@ -10,9 +10,9 @@ class Recommender:
         self.transformer_review = Review2Vec()
         self.transformer_recipe = Recipe2Vec()
     
-    def fit_transform(self, file):
-        self.transformer_review.fit_raw_data()
-        self.transformer_recipe.fit_raw_data()
+    def fit_transform(self, review_file, recipe_file):
+        self.transformer_review.fit_raw_data(review_file)
+        self.transformer_recipe.fit_raw_data(recipe_file)
         self.transformer_review.transform()
         self.transformer_recipe.transform_name()
         self.transformer_recipe.transform_tag()
