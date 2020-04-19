@@ -2,6 +2,17 @@ This is our group project for BYGB 7997 Text Analytics at Fordham University.
 
 Our Team contains BAI, Jiaqi; LIANG, Chenqi; OUYANG, Zhiyu; REN, Yifan; SHEN, Hengda
 
+Recommender
+-------
+To construct the content-based recommender system:
+```python
+  >>> from recommender import Recommender
+  >>> system_constructor = Recommender()
+  >>> system_constructor.fit_transfrom(<.csv file>)
+  >>> recipe_recommender = system_constructor.generator(<recipe_id>)
+  ```
+This will return a generator for front-end usage.
+  
 ReviewManager
 -------
 To fast extract keywords from reviews:
