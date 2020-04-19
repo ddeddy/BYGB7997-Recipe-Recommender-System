@@ -56,17 +56,14 @@ class Recipe2Vec:
     def transform_name(self):
         encoders = dict(zip(("label_encoder", "onehot_encoder"), self.keywords_vec_generator(self.keywords_name)))
         self.keywords_df["recipe_name"] = self.keywords_df["recipe_name"].map(lambda x: self.keywords2vec(x, **encoders))
-        return self.keywords_df
 
     def transform_tag(self):
         encoders = dict(zip(("label_encoder", "onehot_encoder"), self.keywords_vec_generator(self.keywords_tag)))
         self.keywords_df["recipe_tag"] = self.keywords_df["recipe_tag"].map(lambda x: self.keywords2vec(x, **encoders))
-        return self.keywords_df
 
     def transform_ingre(self):
         encoders = dict(zip(("label_encoder", "onehot_encoder"), self.keywords_vec_generator(self.keywords_ingre)))
         self.keywords_df["recipe_ingre"] = self.keywords_df["recipe_ingre"].map(lambda x: self.keywords2vec(x, **encoders))
-        return self.keywords_df
 
     def calculate_name_distance(self, id):
         user_select_vec = self.keywords_df["recipe_name"][id]
