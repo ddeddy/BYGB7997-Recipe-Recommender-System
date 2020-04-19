@@ -49,7 +49,6 @@ class Review2Vec:
     def transform(self):
         encoders = dict(zip(("label_encoder", "onehot_encoder"), self.keywords_vec_generator(self.keywords)))
         self.keywords_df["keywords"] = self.keywords_df["keywords"].map(lambda x:self.keywords2vec(x, **encoders))
-        return self.keywords_df
     
     def calculate_distance(self, recipe_id):
         user_select_vec = self.keywords_df["keywords"][recipe_id]
