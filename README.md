@@ -10,6 +10,8 @@ To construct the content-based recommender system:
   >>> system_constructor = Recommender()
   >>> system_constructor.fit_transform(<file1>, <file2>)
   >>> recipe_recommender = system_constructor.generator(<recipe_id>)
+  >>> for i in recipe_recommender:
+  >>>   print(i)
   ```
 This will return a generator for front-end usage.
   
