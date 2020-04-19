@@ -19,10 +19,10 @@ class Recommender:
         self.transformer_recipe.transform_ingre()
     
     def generator(self, recipe_id):
-        recipe_df = transformer_review.calculate_distance(recipe_id)
-        name_df = transformer_recipe.calculate_name_distance(recipe_id)
-        tag_df = transformer_recipe.calculate_tag_distance(recipe_id)
-        ingre_df = transformer_recipe.calculate_ingre_distance(recipe_id)
+        recipe_df = self.transformer_review.calculate_distance(recipe_id)
+        name_df = self.transformer_recipe.calculate_name_distance(recipe_id)
+        tag_df = self.transformer_recipe.calculate_tag_distance(recipe_id)
+        ingre_df = self.transformer_recipe.calculate_ingre_distance(recipe_id)
         for df in [recipe_df, name_df, tag_df, ingre_df]:
             try:
                 ranking_df = recipe_df.merge(df, left_index=True, right_index=True)
